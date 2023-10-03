@@ -1,0 +1,24 @@
+.container{
+  width: 85%;
+  margin: auto;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.search-item-img{
+  width: 250px;
+  height: 200px;
+  object-fit:contain;
+}
+.category-img{
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
+}

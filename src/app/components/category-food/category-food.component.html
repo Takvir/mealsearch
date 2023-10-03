@@ -1,0 +1,61 @@
+<div>
+  <div class="example-form mt-6 text-center w-full mx-auto">
+    <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input matInput id="search" [(ngModel)]="inputValue" placeholder="Ex. Pizza">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="search()" >Search Food</button>
+  </div>
+</div>
+<div class="container" >
+  <div class="hero h-5/6 bg-base-200 mt-9" *ngIf="detailsDiv">
+  <div class="hero-content flex-col lg:flex-row">
+    <img src="{{detailsResult.strMealThumb}}" class="max-w-sm rounded-lg shadow-2xl" />
+    <div>
+      <h1 class="text-5xl font-bold">{{detailsResult.strMeal}}</h1>
+      <p class="py-6">{{detailsResult.strInstructions}}</p>
+      <p class="py-6">{{detailsResult.strSource}}</p>
+      <button class="btn btn-primary" (click)="onclickShowMore()">Show Details</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="container" *ngIf="showDiv" >
+  <div class="all-food grid grid-cols-4 gap-2 mt-6" >
+    <div *ngFor="let catagory of allcategoryData">
+
+    <div class="card w-72 h-96 bg-base-100 shadow-xl mt-5" (click)="onClickFood(catagory.strCategory)">
+      <figure class="mt-4"><img class="category-img" src="{{catagory.strCategoryThumb}}" alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">{{catagory?.strCategory}}</h2>
+        <p>{{catagory?.strCategoryDescription.slice(0,100)}}</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<div class="container" *ngIf="!showDiv">
+  <div class="all-food grid grid-cols-4 gap-2 mt-6" >
+    <div *ngFor="let searchFood of searchResult">
+    <div class="card w-72 h-96 bg-base-100 shadow-xl mt-5" (click)="loadDetails(searchFood.idMeal)">
+      <figure><img class="search-item-img" src="{{searchFood.strMealThumb}}" alt="Shoes" /></figure>
+      <div class="card-body">
+        <h2 class="card-title">{{searchFood?.strMeal}}</h2>
+        <p>{{searchFood?.strInstructions.slice(0,100)}}</p>
+        <div class="card-actions justify-end">
+          <button class="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
